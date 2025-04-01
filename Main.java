@@ -60,7 +60,14 @@ public class Main {
                 Faculty faculty = new Faculty(fname,classes, timeStartPref, timeEndPref);
                 facultyMap.put(fname, faculty);
 
-            }
+                System.out.println("Enter preference for each course (1-Can't teach it to 5- would love to teach it:");
+                for (String courseName : courseMap.keySet()) {
+                    System.out.print("Preference for \"" + courseName + "\": ");
+                    int preference = scanner.nextInt();
+                    scanner.nextLine();
+                    faculty.setCoursePreference(courseName, preference);
+
+            }}
         }
     }
 }
