@@ -19,4 +19,16 @@ public class Faculty {
         coursePreferences.put(courseName, preference);
     }
 
+    public int getClasses() {
+        return classes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<String, Integer> getCoursePreferences() {
+        return coursePreferences;
+    }
+
 }

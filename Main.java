@@ -6,6 +6,28 @@ public class Main {
         Map<String, Course> courseMap = new HashMap<>();
         Map<String, Faculty> facultyMap = new HashMap<>();
 
+        //Test Courses and Faculty
+        Course cs101 = new Course("Intro to Programming", 101, 0, 3);
+        Course cs201 = new Course("Data Structures", 201, 1, 4);
+        Course cs301 = new Course("Algorithms", 301, 2, 4);
+        courseMap.put(cs101.getName(), cs101);
+        courseMap.put(cs201.getName(), cs201);
+        courseMap.put(cs301.getName(), cs301);
+
+        Faculty john = new Faculty("John", 2, 900, 1600);
+        Faculty bob = new Faculty("Bob", 1, 1000, 1700);
+
+        john.setCoursePreference("Intro to Programming", 5);
+        john.setCoursePreference("Data Structures", 3);
+        john.setCoursePreference("Algorithms", 2);
+
+        bob.setCoursePreference("Intro to Programming", 2);
+        bob.setCoursePreference("Data Structures", 4);
+        bob.setCoursePreference("Algorithms", 1);
+
+        facultyMap.put(john.getName(), john);
+        facultyMap.put(bob.getName(), bob);
+
 
         int i = 0;
         while (i == 0) {
@@ -69,5 +91,23 @@ public class Main {
 
             }}
         }
+
+        List<Faculty> facultyList = new ArrayList<>(facultyMap.values());
+        List<Course> courseList = new ArrayList<>(courseMap.values());
+
+        AssignmentSolver solver = new AssignmentSolver(facultyList, courseList);
+        Map<String, String> assignments = solver.solve();
+
+
+        System.out.println("\nCourse Assignments:");
+        for (Course course : courseList) {
+            String assignedTo = assignments.getOrDefault(course.getName(), "Unassigned");
+            System.out.println("Course \"" + course.getName() + "\" → " + assignedTo);
+        }
+
+
+
+
     }
-}
+
+    }

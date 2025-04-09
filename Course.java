@@ -12,4 +12,8 @@ public class Course {
         this.credits=credits;
     }
 
+    public String getName() {
+        return name;
+    }
+
 }
