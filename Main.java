@@ -7,23 +7,40 @@ public class Main {
         Map<String, Faculty> facultyMap = new HashMap<>();
 
         //Test Courses and Faculty
-        Course cs101 = new Course("Intro to Programming", 101, 0, 3);
-        Course cs201 = new Course("Data Structures", 201, 1, 4);
-        Course cs301 = new Course("Algorithms", 301, 2, 4);
+        Course cs101 = new Course("Intro to Programming", 101, 0, 3,1,2);
+        Course cs201 = new Course("Data Structures", 201, 2, 4,2,3);
+        Course cs301 = new Course("Algorithms", 301, 2, 4,1,3);
+        Course cs302 = new Course("Software Engineering", 302, 2, 4,0,1);
+        Course cs303 = new Course("Ethics", 303, 2, 4,0,1);
+        Course cs304 = new Course("Software Project", 304, 2, 4,0,1);
+        Course cs305 = new Course("Machine Learning", 305, 2, 4,0,1);
         courseMap.put(cs101.getName(), cs101);
         courseMap.put(cs201.getName(), cs201);
         courseMap.put(cs301.getName(), cs301);
+        courseMap.put(cs302.getName(), cs302);
+        courseMap.put(cs303.getName(), cs303);
+        courseMap.put(cs304.getName(), cs304);
+        courseMap.put(cs305.getName(), cs305);
 
-        Faculty john = new Faculty("John", 2, 900, 1600);
-        Faculty bob = new Faculty("Bob", 1, 1000, 1700);
+
+        Faculty john = new Faculty("John", 5, 900, 1600);
+        Faculty bob = new Faculty("Bob", 5, 1000, 1700);
 
         john.setCoursePreference("Intro to Programming", 5);
         john.setCoursePreference("Data Structures", 3);
         john.setCoursePreference("Algorithms", 2);
+        john.setCoursePreference("Software Engineering", 2);
+        john.setCoursePreference("Ethics", 3);
+        john.setCoursePreference("Software Project", 1);
+        john.setCoursePreference("Machine Learning", 5);
 
         bob.setCoursePreference("Intro to Programming", 2);
         bob.setCoursePreference("Data Structures", 4);
         bob.setCoursePreference("Algorithms", 1);
+        bob.setCoursePreference("Software Engineering", 2);
+        bob.setCoursePreference("Ethics", 2);
+        bob.setCoursePreference("Software Project", 3);
+        bob.setCoursePreference("Machine Learning", 1);
 
         facultyMap.put(john.getName(), john);
         facultyMap.put(bob.getName(), bob);
@@ -51,7 +68,15 @@ public class Main {
                 int credits = scanner.nextInt();
                 scanner.nextLine();
 
-                Course course = new Course(name,id, season, credits);
+                System.out.println("Minimum required number of sections:");
+                int minSections = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.println("Maximum number of sections:");
+                int maxSections = scanner.nextInt();
+                scanner.nextLine();
+
+                Course course = new Course(name,id, season, credits,minSections,maxSections);
                 courseMap.put(name, course);
 
             }
@@ -92,18 +117,49 @@ public class Main {
             }}
         }
 
-        List<Faculty> facultyList = new ArrayList<>(facultyMap.values());
         List<Course> courseList = new ArrayList<>(courseMap.values());
+        List<Faculty> facultyList = new ArrayList<>(facultyMap.values());
 
-        AssignmentSolver solver = new AssignmentSolver(facultyList, courseList);
+
+        // Filter courses by semester
+        System.out.println("Which semester are you scheduling for? (1 = Fall, 2 = Spring)");
+        int targetSemester = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Course> filteredCourses = new ArrayList<>();
+        for (Course c : courseList) {
+            if (c.getSeason() == 0 || c.getSeason() == targetSemester) {
+                filteredCourses.add(c);
+            }
+        }
+
+// Create course sections
+        List<CourseSection> sectionsToAssign = new ArrayList<>();
+        Map<String, Integer> sectionCounter = new HashMap<>();
+        for (Course c : filteredCourses) {
+            int goodFacultyCount = 0;
+            for (Faculty f : facultyList) {
+                int pref = f.getCoursePreferences().getOrDefault(c.getName(), 1);
+                if (pref >= 4) goodFacultyCount++;
+            }
+
+            int totalSections = c.getMinSections() + Math.min(goodFacultyCount, c.getMaxSections() - c.getMinSections());
+            for (int s = 1; s <= totalSections; s++) {
+                sectionsToAssign.add(new CourseSection(c, s));
+            }
+        }
+
+// Solve
+        AssignmentSolver solver = new AssignmentSolver(facultyList, sectionsToAssign);
         Map<String, String> assignments = solver.solve();
 
-
+// Output
         System.out.println("\nCourse Assignments:");
-        for (Course course : courseList) {
-            String assignedTo = assignments.getOrDefault(course.getName(), "Unassigned");
-            System.out.println("Course \"" + course.getName() + "\" → " + assignedTo);
+        for (CourseSection section : sectionsToAssign) {
+            String assignedTo = assignments.getOrDefault(section.getLabel(), "Unassigned");
+            System.out.println(section.getLabel() + " → " + assignedTo);
         }
+
 
 
 
