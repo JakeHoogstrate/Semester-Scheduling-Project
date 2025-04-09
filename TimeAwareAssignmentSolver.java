@@ -45,24 +45,33 @@ public class TimeAwareAssignmentSolver {
                 faculty.assignSlot(opt.timeSlot);
                 facultyAssignedCount[opt.facultyIdx]++;
                 assignedSections.add(opt.sectionIdx);
-                finalAssignments.put(section.getLabel(), new Assignment(faculty.getName(), opt.timeSlot));
+                finalAssignments.put(section.getLabel(), new Assignment(faculty, opt.timeSlot)); // ✅ store Faculty object
             }
         }
 
         return finalAssignments;
     }
 
+    // ✅ Updated Assignment class to hold Faculty object
     public static class Assignment {
-        private String facultyName;
+        private Faculty faculty;
         private TimeSlot timeSlot;
 
-        public Assignment(String facultyName, TimeSlot timeSlot) {
-            this.facultyName = facultyName;
+        public Assignment(Faculty faculty, TimeSlot timeSlot) {
+            this.faculty = faculty;
             this.timeSlot = timeSlot;
         }
 
+        public Faculty getFaculty() {
+            return faculty;
+        }
+
+        public TimeSlot getTimeSlot() {
+            return timeSlot;
+        }
+
         public String toString() {
-            return facultyName + " @ " + timeSlot.toString();
+            return faculty.getName() + " @ " + timeSlot.toString();
         }
     }
 
