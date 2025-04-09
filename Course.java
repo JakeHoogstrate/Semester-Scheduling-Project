@@ -33,4 +33,13 @@ public class Course {
         return maxSections;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+
 }

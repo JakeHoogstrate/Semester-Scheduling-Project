@@ -31,4 +31,29 @@ public class Faculty {
         return coursePreferences;
     }
 
+    public int getTimeStartPref() {
+        return timeStartPref;
+    }
+
+    public int getTimeEndPref(){
+        return timeEndPref;
+    }
+
+
+    private List<TimeSlot> assignedSlots = new ArrayList<>();
+
+    public boolean isAvailable(TimeSlot slot) {
+        if (slot.getStartTime() < this.timeStartPref || slot.getEndTime() > this.timeEndPref) {
+            return false;
+        }
+        for (TimeSlot t : assignedSlots) {
+            if (t.overlapsWith(slot)) return false;
+        }
+        return true;
+    }
+
+    public void assignSlot(TimeSlot slot) {
+        assignedSlots.add(slot);
+    }
+
 }

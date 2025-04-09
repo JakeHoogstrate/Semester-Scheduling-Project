@@ -1,0 +1,171 @@
+[
+  {
+    "name": "Making Sense of Data w/Data Mgt Sys",
+    "id": 105,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Making Sense of Data w/SPSS",
+    "id": 106,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Making Sense of Data w/Matlab",
+    "id": 107,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Making Sense of Data w/Academic Research",
+    "id": 108,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Computer Sci through Programming",
+    "id": 151,
+    "season": 0,
+    "credits": 4,
+    "minSections": 1,
+    "maxSections": 2
+  },
+  {
+    "name": "Opportunities in STEM",
+    "id": 200,
+    "season": 1,
+    "credits": 1,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Object-Oriented Data Structure",
+    "id": 212,
+    "season": 0,
+    "credits": 4,
+    "minSections": 1,
+    "maxSections": 2
+  },
+  {
+    "name": "Introduction to Linux",
+    "id": 266,
+    "season": 2,
+    "credits": 1,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Discrete Structures",
+    "id": 295,
+    "season": 1,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Obj-Oriented Software Design",
+    "id": 312,
+    "season": 1,
+    "credits": 4,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Computer Systems",
+    "id": 366,
+    "season": 2,
+    "credits": 3,
+    "minSections": 1,
+    "maxSections": 2
+  },
+  {
+    "name": "Programming Languages",
+    "id": 451,
+    "season": 2,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Software Engineering",
+    "id": 482,
+    "season": 1,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Topics in Computer Science",
+    "id": 489,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Tech Innovation\u0026Entrepreneurship",
+    "id": 491,
+    "season": 2,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Computer Science Project Plan",
+    "id": 495,
+    "season": 1,
+    "credits": 1,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Computer Science Project I",
+    "id": 496,
+    "season": 2,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Introduction to Programming",
+    "id": 701,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Programming for Data Science",
+    "id": 703,
+    "season": 1,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Machine Learning",
+    "id": 737,
+    "season": 2,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  },
+  {
+    "name": "Big Data",
+    "id": 753,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
+  }
+
+]
