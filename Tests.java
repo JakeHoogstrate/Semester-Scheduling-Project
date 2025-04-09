@@ -217,6 +217,74 @@ public class Tests {
                 "Assigned time must be within faculty's preferred window");
     }
 
+    @Test
+    public void testFacultyNotAssignedOutsidePreferences() {
+        // TODO: Implement FacultyNotAssignedOutsidePreferences
+        // This test ensures that faculty are only assigned classes within their preferred time window.
+        fail("Not yet implemented: testFacultyNotAssignedOutsidePreferences");
+    }
 
+    @Test
+    public void testManualFacultyEditUpdatesCorrectly() {
+        // TODO: Implement ManualFacultyEditUpdatesCorrectly
+        // This test ensures that edits to a faculty member’s preferences and availability are reflected.
+        fail("Not yet implemented: testManualFacultyEditUpdatesCorrectly");
+    }
+
+    @Test
+    public void testRemoveFacultyReflectsInAssignment() {
+        // TODO: Implement RemoveFacultyReflectsInAssignment
+        // This test ensures that a removed faculty member is not assigned any classes.
+        fail("Not yet implemented: testRemoveFacultyReflectsInAssignment");
+    }
+
+    @Test
+    public void testExportFormatStructure() {
+        // TODO: Implement ExportFormatStructure
+        // This test ensures that exported data is correctly structured and readable.
+        fail("Not yet implemented: testExportFormatStructure");
+    }
+
+    @Test
+    public void testMultipleSchedulesGeneration() {
+        // TODO: Implement MultipleSchedulesGeneration
+        // This test checks that a new schedule can be regenerated from the same data.
+        fail("Not yet implemented: testMultipleSchedulesGeneration");
+    }
+
+    @Test
+    public void testFacultyBalanceAcrossAssignments() {
+        // TODO: Implement FacultyBalanceAcrossAssignments
+        // This test ensures that no faculty is assigned more classes than they are set to teach.
+        fail("Not yet implemented: testFacultyBalanceAcrossAssignments");
+    }
+
+    @Test
+    public void testNoDuplicateAssignments() {
+        // TODO: Implement NoDuplicateAssignments
+        // This test ensures each course section is assigned only once.
+        fail("Not yet implemented: testNoDuplicateAssignments");
+    }
+
+    @Test
+    public void testCoursesRespectMinMaxSections() {
+        // TODO: Implement CoursesRespectMinMaxSections
+        // This test ensures each course respects its min/max section constraints.
+        fail("Not yet implemented: testCoursesRespectMinMaxSections");
+    }
+
+    @Test
+    public void testGlobalPreferencesAreApplied() {
+        // TODO: Implement GlobalPreferencesAreApplied
+        // This test checks that general scheduling preferences are followed.
+        fail("Not yet implemented: testGlobalPreferencesAreApplied");
+    }
+
+    @Test
+    public void testScheduleConflictHighlighting() {
+        // TODO: Implement ScheduleConflictHighlighting
+        // This test should simulate a conflict and check that it is flagged.
+        fail("Not yet implemented: testScheduleConflictHighlighting");
+    }
 
 }
