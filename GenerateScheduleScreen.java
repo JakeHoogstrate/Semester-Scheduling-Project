@@ -25,7 +25,9 @@ public class GenerateScheduleScreen {
     );
 
     private static Map<String, String> savedSchedule = new LinkedHashMap<>();
-
+    public static String testGetColorForCourse(String courseName) {
+        return getColorForCourse(courseName);
+    }
     public static void show(Stage primaryStage) {
         VBox root = new VBox(20);
         root.setStyle("-fx-padding: 20; -fx-alignment: center; -fx-background-color: linear-gradient(to bottom, #ffffff, #e0f7fa);");
@@ -194,7 +196,7 @@ public class GenerateScheduleScreen {
 
 
 
-    private static void saveScheduleToJson() {
+    public static void saveScheduleToJson() {
         Gson gson = new Gson();
         try (Writer writer = new FileWriter("saved_schedule.json")) {
             gson.toJson(savedSchedule, writer);
@@ -234,6 +236,11 @@ public class GenerateScheduleScreen {
         if (hour == 0) hour = 12;
         return String.format("%d:%02d%s", hour, min, ampm);
     }
+
+    public static Map<String, String> getSavedSchedule() {
+        return savedSchedule;
+    }
+
 
 
 }
