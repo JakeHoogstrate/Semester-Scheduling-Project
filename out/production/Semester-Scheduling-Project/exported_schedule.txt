@@ -1,0 +1,62 @@
+Tuesday 8:00AM: CS212 (Isaac), 8:00AM-9:15AM, Credits: 4
+
+Thursday 8:00AM: CS212 (Isaac), 8:00AM-9:15AM, Credits: 4
+
+Monday 3:00PM: CS482 (Alice), 3:00PM-3:50PM, Credits: 3
+
+Wednesday 3:00PM: CS482 (Alice), 3:00PM-3:50PM, Credits: 3
+
+Friday 3:00PM: CS482 (Alice), 3:00PM-3:50PM, Credits: 3
+
+Monday 1:00PM: CS312 (Bob), 1:00PM-1:50PM, Credits: 4
+
+Wednesday 1:00PM: CS312 (Bob), 1:00PM-1:50PM, Credits: 4
+
+Friday 1:00PM: CS312 (Bob), 1:00PM-1:50PM, Credits: 4
+
+Tuesday 12:15PM: CS753 (Charlie), 12:15PM-1:30PM, Credits: 3
+
+Thursday 12:15PM: CS753 (Charlie), 12:15PM-1:30PM, Credits: 3
+
+Monday 12:00PM: CS701 (Mike), 12:00PM-12:50PM, Credits: 3
+
+Wednesday 12:00PM: CS701 (Mike), 12:00PM-12:50PM, Credits: 3
+
+Friday 12:00PM: CS701 (Mike), 12:00PM-12:50PM, Credits: 3
+
+Monday 10:00AM: CS106 (Julia), 10:00AM-10:50AM, Credits: 3
+
+Wednesday 10:00AM: CS106 (Julia), 10:00AM-10:50AM, Credits: 3
+
+Friday 10:00AM: CS106 (Julia), 10:00AM-10:50AM, Credits: 3
+
+Monday 2:00PM: CS107 (Hannah), 2:00PM-2:50PM, Credits: 3
+
+Wednesday 2:00PM: CS107 (Hannah), 2:00PM-2:50PM, Credits: 3
+
+Friday 2:00PM: CS107 (Hannah), 2:00PM-2:50PM, Credits: 3
+
+Monday 9:00AM: CS151 (Charlie), 9:00AM-9:50AM, Credits: 4
+
+Wednesday 9:00AM: CS151 (Charlie), 9:00AM-9:50AM, Credits: 4
+
+Friday 9:00AM: CS151 (Charlie), 9:00AM-9:50AM, Credits: 4
+
+Tuesday 10:50AM: CS151 (Morgan), 10:50AM-12:05PM, Credits: 4
+
+Thursday 10:50AM: CS151 (Morgan), 10:50AM-12:05PM, Credits: 4
+
+Monday 11:00AM: CS212 (Alice), 11:00AM-11:50AM, Credits: 4
+
+Wednesday 11:00AM: CS212 (Alice), 11:00AM-11:50AM, Credits: 4
+
+Friday 11:00AM: CS212 (Alice), 11:00AM-11:50AM, Credits: 4
+
+Tuesday 1:40PM: CS489 (Fred), 1:40PM-2:55PM, Credits: 3
+
+Thursday 1:40PM: CS489 (Fred), 1:40PM-2:55PM, Credits: 3
+
+Tuesday 3:05PM: CS495 (Mike), 3:05PM-4:20PM, Credits: 1
+
+Thursday 3:05PM: CS495 (Mike), 3:05PM-4:20PM, Credits: 1
+
