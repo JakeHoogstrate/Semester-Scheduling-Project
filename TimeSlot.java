@@ -2,7 +2,7 @@ public class TimeSlot {
     public enum DayPattern { MWF, TTH }
 
     private DayPattern pattern;
-    private int startTime; // military time, e.g. 800, 925
+    private int startTime;
 
     public TimeSlot(DayPattern pattern, int startTime) {
         this.pattern = pattern;
@@ -13,17 +13,34 @@ public class TimeSlot {
         return pattern;
     }
 
+    public DayPattern getDayPattern() {
+        return pattern;
+    }
+
     public int getStartTime() {
         return startTime;
     }
 
     public int getEndTime() {
         if (pattern == DayPattern.MWF) {
-            return startTime + 50;
-        } else { // TTh
-            return startTime + 75;
+            return addMinutes(startTime, 50);
+        } else {
+            return addMinutes(startTime, 75);
         }
     }
+
+    private int addMinutes(int time, int mins) {
+        int hours = time / 100;
+        int minutes = time % 100;
+        minutes += mins;
+        while (minutes >= 60) {
+            minutes -= 60;
+            hours++;
+        }
+        return hours * 100 + minutes;
+    }
+
+
 
     public boolean overlapsWith(TimeSlot other) {
         if (this.pattern != other.pattern) return false;

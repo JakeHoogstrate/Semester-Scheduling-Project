@@ -166,6 +166,14 @@
     "credits": 3,
     "minSections": 0,
     "maxSections": 1
+  },
+  {
+    "name": "Ethics",
+    "id": 800,
+    "season": 0,
+    "credits": 3,
+    "minSections": 0,
+    "maxSections": 1
   }
 
 ]

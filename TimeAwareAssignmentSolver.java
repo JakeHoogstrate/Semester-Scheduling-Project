@@ -12,6 +12,7 @@ public class TimeAwareAssignmentSolver {
         this.allTimeSlots = timeSlots;
     }
 
+
     public Map<String, Assignment> solve() {
         List<AssignmentOption> options = new ArrayList<>();
 
@@ -24,16 +25,22 @@ public class TimeAwareAssignmentSolver {
 
                 for (TimeSlot slot : allTimeSlots) {
                     if (faculty.isAvailable(slot)) {
-                        options.add(new AssignmentOption(fIdx, sIdx, slot, 5 - pref));
+                        int baseCost = 5 - pref;
+                        options.add(new AssignmentOption(fIdx, sIdx, slot, baseCost));
                     }
                 }
             }
         }
 
-        options.sort(Comparator.comparingInt(o -> o.cost));
+        // Shuffle options slightly to prevent tie bias
+        Collections.shuffle(options);
 
         Set<Integer> assignedSections = new HashSet<>();
         int[] facultyAssignedCount = new int[facultyList.size()];
+
+        Map<Integer, Set<TimeSlot.DayPattern>> facultyDayPatterns = new HashMap<>();
+        int mwfAssigned = 0;
+        int tthAssigned = 0;
 
         for (AssignmentOption opt : options) {
             if (assignedSections.contains(opt.sectionIdx)) continue;
@@ -41,16 +48,46 @@ public class TimeAwareAssignmentSolver {
             if (facultyAssignedCount[opt.facultyIdx] >= faculty.getClasses()) continue;
 
             CourseSection section = sectionList.get(opt.sectionIdx);
-            if (faculty.isAvailable(opt.timeSlot)) {
-                faculty.assignSlot(opt.timeSlot);
-                facultyAssignedCount[opt.facultyIdx]++;
-                assignedSections.add(opt.sectionIdx);
-                finalAssignments.put(section.getLabel(), new Assignment(faculty, opt.timeSlot)); // ✅ store Faculty object
+            if (!faculty.isAvailable(opt.timeSlot)) continue;
+
+            TimeSlot.DayPattern pattern = opt.timeSlot.getPattern();
+
+            // Check global balance
+            boolean mwfHeavier = mwfAssigned > tthAssigned;
+            if (pattern == TimeSlot.DayPattern.MWF && mwfHeavier && (mwfAssigned - tthAssigned) > 2) {
+                continue; // Skip more MWF if way heavier
             }
+            if (pattern == TimeSlot.DayPattern.TTH && !mwfHeavier && (tthAssigned - mwfAssigned) > 2) {
+                continue; // Skip more TTH if way heavier
+            }
+
+            // Check faculty preference for day grouping
+            Set<TimeSlot.DayPattern> facultyDays = facultyDayPatterns.getOrDefault(opt.facultyIdx, new HashSet<>());
+
+            if (!facultyDays.isEmpty() && !facultyDays.contains(pattern)) {
+                // Light preference: 70% chance to skip assigning a "new" day pattern
+                if (Math.random() < 0.7) {
+                    continue;
+                }
+            }
+
+            // Assign it!
+            faculty.assignSlot(opt.timeSlot);
+            facultyAssignedCount[opt.facultyIdx]++;
+            assignedSections.add(opt.sectionIdx);
+            finalAssignments.put(section.getLabel(), new Assignment(faculty, opt.timeSlot));
+
+            // Update tracking
+            if (pattern == TimeSlot.DayPattern.MWF) mwfAssigned++;
+            if (pattern == TimeSlot.DayPattern.TTH) tthAssigned++;
+
+            facultyDays.add(pattern);
+            facultyDayPatterns.put(opt.facultyIdx, facultyDays);
         }
 
         return finalAssignments;
     }
+
 
     // ✅ Updated Assignment class to hold Faculty object
     public static class Assignment {

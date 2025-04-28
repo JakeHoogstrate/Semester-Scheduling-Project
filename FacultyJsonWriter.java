@@ -18,21 +18,32 @@ public class FacultyJsonWriter {
 
     public static void updateFaculty(Faculty updated) {
         List<JsonFaculty> facultyList = loadFacultyList();
+        boolean found = false;
 
         for (int i = 0; i < facultyList.size(); i++) {
             if (facultyList.get(i).name.equalsIgnoreCase(updated.getName())) {
                 facultyList.set(i, convertToJson(updated));
+                found = true;
                 break;
             }
         }
 
-        saveFacultyList(facultyList);
+        if (found) {
+            saveFacultyList(facultyList);
+        } else {
+            System.out.println("Faculty not found: " + updated.getName());
+        }
     }
 
     public static void removeFaculty(String name) {
         List<JsonFaculty> facultyList = loadFacultyList();
-        facultyList.removeIf(f -> f.name.equalsIgnoreCase(name));
-        saveFacultyList(facultyList);
+        boolean removed = facultyList.removeIf(f -> f.name.equalsIgnoreCase(name));
+
+        if (removed) {
+            saveFacultyList(facultyList);
+        } else {
+            System.out.println("Faculty not found: " + name);
+        }
     }
 
     private static List<JsonFaculty> loadFacultyList() {
@@ -41,6 +52,7 @@ public class FacultyJsonWriter {
         try (Reader reader = new FileReader(FILE_PATH)) {
             return gson.fromJson(reader, listType);
         } catch (IOException e) {
+            System.out.println("Error loading faculty data, creating new list.");
             return new ArrayList<>();
         }
     }

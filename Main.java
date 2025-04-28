@@ -124,13 +124,32 @@ public class Main {
 
     public static List<TimeSlot> generateAllTimeSlots() {
         List<TimeSlot> slots = new ArrayList<>();
-        for (int t = 800; t <= 1700; t += 100) {
-            slots.add(new TimeSlot(TimeSlot.DayPattern.MWF, t));
+
+        // Generate MWF slots: every hour from 8:00 AM to 5:00 PM
+        for (int time = 800; time <= 1700; time += 100) {
+            slots.add(new TimeSlot(TimeSlot.DayPattern.MWF, time));
         }
+
+        // Generate TTh slots: special weird start times
         int[] tthStartTimes = {800, 925, 1050, 1215, 1340, 1505, 1630};
-        for (int t : tthStartTimes) {
-            slots.add(new TimeSlot(TimeSlot.DayPattern.TTH, t));
+        for (int time : tthStartTimes) {
+            slots.add(new TimeSlot(TimeSlot.DayPattern.TTH, time));
         }
+
         return slots;
     }
+
+
+    public static int addMinutes(int militaryTime, int minutes) {
+        int hours = militaryTime / 100;
+        int mins = militaryTime % 100;
+
+        mins += minutes;
+        while (mins >= 60) {
+            hours += 1;
+            mins -= 60;
+        }
+        return hours * 100 + mins;
+    }
+
 }

@@ -9,15 +9,20 @@ import java.util.Map;
 
 public class CourseJsonLoader {
 
-    public static Map<String, Course> loadCourses(String filePath) {
-        Map<String, Course> courseMap = new HashMap<>();
 
+    private static Map<String, Course> courseMap = new HashMap<>();
+
+
+    public static Map<String, Course> loadCourses(String filePath) {
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new Gson();
             Type listType = new TypeToken<List<JsonCourse>>() {}.getType();
             List<JsonCourse> courseList = gson.fromJson(reader, listType);
 
+            courseMap.clear();
+
             for (JsonCourse c : courseList) {
+
                 Course course = new Course(c.name, c.id, c.season, c.credits, c.minSections, c.maxSections);
                 courseMap.put(c.name, course);
             }
@@ -29,12 +34,18 @@ public class CourseJsonLoader {
         return courseMap;
     }
 
+
     private static class JsonCourse {
-        String name;
-        int id;
-        int season;
-        int credits;
-        int minSections;
-        int maxSections;
+        String name;          // Course name
+        int id;               // Course ID
+        int season;           // Season (1 for Fall, 2 for Spring, 0 for both)
+        int credits;          // Number of credits
+        int minSections;      // Minimum sections
+        int maxSections;      // Maximum sections
+    }
+
+
+    public static Map<String, Course> getCourseMap() {
+        return courseMap;
     }
 }

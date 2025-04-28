@@ -7,13 +7,15 @@ import java.util.*;
 
 public class FacultyJsonLoader {
 
-    public static Map<String, Faculty> loadFaculty(String filePath, Map<String, Course> courseMap) {
-        Map<String, Faculty> facultyMap = new HashMap<>();
+    private static Map<String, Faculty> facultyMap = new HashMap<>();
 
+    public static Map<String, Faculty> loadFaculty(String filePath, Map<String, Course> courseMap) {
         try (FileReader reader = new FileReader(filePath)) {
             Gson gson = new Gson();
             Type listType = new TypeToken<List<JsonFaculty>>() {}.getType();
             List<JsonFaculty> facultyList = gson.fromJson(reader, listType);
+
+            facultyMap.clear();
 
             for (JsonFaculty f : facultyList) {
                 Faculty faculty = new Faculty(f.name, f.numClasses, f.timeStart, f.timeEnd);
@@ -38,5 +40,9 @@ public class FacultyJsonLoader {
         int timeStart;
         int timeEnd;
         Map<String, Integer> preferences;
+    }
+
+    public static Map<String, Faculty> getFacultyMap() {
+        return facultyMap;
     }
 }
